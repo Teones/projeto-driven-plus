@@ -1,0 +1,48 @@
+.plano {
+    width: 100vw;
+    background-color: #0E0E13;
+    display: flex;
+    flex-direction: column;
+    padding: 33px 38px;
+}
+
+.plano .logo {
+    width: 100%;
+
+    font-family: "Roboto";
+    font-size: 32px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+.plano .logo img {
+    width: 140px;
+    height: 95px;
+}
+
+.plano .dados-do-plano {
+    font-family: "Roboto";
+    font-weight: 400;
+    color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 22px;
+}
+.plano .dados-do-plano h1{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.plano .dados-do-plano h2 {
+    font-size: 16px;
+    margin:8px 0 5px 0;
+}
+.plano .dados-do-plano .beneficio {
+    font-weight: 400;
+    margin-bottom: 3px;
+}
