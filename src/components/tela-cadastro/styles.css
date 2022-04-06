@@ -1,0 +1,67 @@
+.cadastro {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0E0E13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 38px;
+}
+
+.cadastro form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cadastro input {
+    width: 100%;
+    height: 52px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    color: #0E0E13;
+
+    display: flex;
+    justify-content: center;
+    padding-left: 14px;
+}
+.cadastro input::placeholder {
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    color: #7E7E7E;
+}
+
+.cadastro button {
+    width: 100%;
+    height: 52px;
+    background-color: #FF4791;
+    border-radius: 8px;
+    border: #FF4791;
+
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.cadastro .link a:-webkit-any-link {
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-decoration: underline;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
