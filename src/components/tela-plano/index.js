@@ -6,7 +6,7 @@ import "./styles.css"
 
 export default function Plano ({dados}) {
     const { id } = useParams();
-    const [planos, setPlanos] = useState([])
+    const [planos, setPlanos] = useState()
 
     useEffect(() => {
         const url = `https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions/memberships/${id}`
@@ -24,12 +24,12 @@ export default function Plano ({dados}) {
         promise.catch(erro => console.log(erro.response))
     }, [])
 
-
+    if(!planos){ return(<></>)}
     return (
         <div className="plano">
             <Logo imagem={planos.image} nome={planos.name} />
-            <DadosDoPlano beneficios={planos.perks} valor={planos.price} />
-            <Formulario />
+            <DadosDoPlano planos={planos} valor={planos.price} />
+            <Formulario token={dados} />
         </div>
     )
 }
@@ -43,25 +43,36 @@ function Logo ({nome, imagem}) {
     )
 }
 
-function DadosDoPlano ({beneficios, valor}) {
+function DadosDoPlano ({planos, valor}) {
+    console.log(planos)
     return (
         <div className="dados-do-plano">
             <h1>Beneficios:</h1>
-            {beneficios.map(beneficio => <Beneficio id={beneficio.id} titulo={beneficio.title} />)}
+            {planos.perks.map(beneficio => <Beneficio id={beneficio.id} titulo={beneficio.title} />)}
             <h2>Preço:</h2>
             R$ {valor} cobrados mensalmente
         </div>
     )
 }
 function Beneficio ({id, titulo}) {
+    let ordinal = 0
+    if(id >= 6) {
+        ordinal = id - 5
+    } else if (id < 3 ) {
+        ordinal = id
+    } else {
+        ordinal = id - 2
+    }
     return (
         <div className="beneficio">
-            {id - 5}. {titulo}
+            {ordinal}. {titulo}
         </div>
     )
 }
 
-function Formulario () {
+function Formulario ({token}) {
+    const {id} = useParams()
+
     const [nome, setNome] = useState("")
     const [numero, setNumero] = useState("")
     const [codigo, setCodigo] = useState("")
@@ -73,30 +84,36 @@ function Formulario () {
         event.preventDefault()
         const url = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions"
         const body = {
-            membershipId: 1,
+            membershipId: id,
             cardName: nome,
             cardNumber: numero,
             securityNumber: codigo,
             expirationDate: validade
         }
-        const promise = axios.post(url, body)
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        const promise = axios.post(url, body, config)
         promise.then(response => {
             const {data} = response
-            // setDados(data)
-            {data.menbership === undefined ? 
-                navigate("/subscriptions") : navigate("/")}
+            console.log(data)
+            navigate(`/home/:${id}`)
             
         })
-        promise.catch(erro => alert(erro.response))
+        promise.catch(erro => console.log(erro.response))
     }
 
 
     return (
         <form onSubmit={assinar}>
             <input type="text" placeholder="Nome impresso no cartão" value={nome} onChange={e => setNome(e.target.value)} required />
-            <input type="number" placeholder="Digitos do cartão" value={numero} onChange={e => setNumero(e.target.value)} required />
-            <input type="number" placeholder="Cógigo de segurança" value={codigo} onChange={e => setCodigo(e.target.value)} required />
-            <input type="number" placeholder="Validade" value={validade} onChange={e => setValidade(e.target.value)} required />
+            <input type="text" placeholder="Digitos do cartão" value={numero} onChange={e => setNumero(e.target.value)} required />
+            <div className="separa">
+                <input type="number" placeholder="Cógigo de segurança" value={codigo} onChange={e => setCodigo(e.target.value)} required />
+                <input type="text" placeholder="Validade" value={validade} onChange={e => setValidade(e.target.value)} required />
+            </div>
 
             <button type="submit">ASSINAR</button>
         </form>

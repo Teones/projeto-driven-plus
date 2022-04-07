@@ -5,6 +5,7 @@ import Login from "./components/tela-login"
 import Cadastro from "./components/tela-cadastro"
 import Planos from "./components/tela-planos"
 import Plano from "./components/tela-plano"
+import Home from "./components/tela-home"
 
 
 export default function App () {
@@ -17,6 +18,7 @@ export default function App () {
                 <Route path="/sign-up" element={<Cadastro />} />
                 <Route path="/subscriptions" element={<Planos dados={dados.token} />} />
                 <Route path="/subscriptions/:id" element={<Plano dados={dados.token} />} />
+                <Route path="/home/:id" element={<Home dados={dados} />} />
             </Routes>
         </BrowserRouter>
     )

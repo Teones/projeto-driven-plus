@@ -46,3 +46,41 @@
     font-weight: 400;
     margin-bottom: 3px;
 }
+
+.plano form {
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 400;
+    color: #7E7E7E;
+
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 34px;
+}
+.plano input {
+    width: 100%;
+    height: 52px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    border: none;
+    padding-left: 14px;
+}
+.plano .separa {
+    display: flex;
+    gap: 9px;
+}
+.plano button {
+    width: 100%;
+    height: 52px;
+    border-radius: 8px;
+    border: #FF4791;
+    background-color: #FF4791;
+    
+    font-family: "Roboto";
+    font-weight: 700;
+    color: #FFFFFF;
+
+    margin-top: 5px;
+}

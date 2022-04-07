@@ -1,0 +1,61 @@
+.home {
+    width: 100vw;
+    background-color: #0E0E13;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0 38px;
+}
+
+.home .header {
+    padding-top: 32px;
+}
+.home .header img {
+    width: 75px;
+    height: 50px;
+}
+
+.home .boas-vindas {
+    width: 100%;
+    
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 13px;
+}
+
+.home .beneficios {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 53px;
+}
+
+.home button {
+    width: 100%;
+    height: 52px;
+    border-radius: 8px;
+    background-color: #FF4791;
+    border: none;
+
+    font-family: "Roboto";
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home .footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 100px 0 20px 0 ;
+}
