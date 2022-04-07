@@ -4,7 +4,7 @@ import axios from "axios"
 
 import "./styles.css"
 
-export default function Plano ({dados}) {
+export default function Plano ({dados, setDados}) {
     const { id } = useParams();
     const [planos, setPlanos] = useState()
 
@@ -29,7 +29,7 @@ export default function Plano ({dados}) {
         <div className="plano">
             <Logo imagem={planos.image} nome={planos.name} />
             <DadosDoPlano planos={planos} valor={planos.price} />
-            <Formulario token={dados} />
+            <Formulario token={dados} setDados={setDados} />
         </div>
     )
 }
@@ -70,7 +70,7 @@ function Beneficio ({id, titulo}) {
     )
 }
 
-function Formulario ({token}) {
+function Formulario ({token, setDados}) {
     const {id} = useParams()
 
     const [nome, setNome] = useState("")
@@ -99,7 +99,8 @@ function Formulario ({token}) {
         promise.then(response => {
             const {data} = response
             console.log(data)
-            navigate(`/home/:${id}`)
+            setDados(data)
+            navigate(`/home`)
             
         })
         promise.catch(erro => console.log(erro.response))

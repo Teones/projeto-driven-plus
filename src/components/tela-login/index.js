@@ -41,8 +41,8 @@ function Formulario ({setDados}) {
         promise.then(response => {
             const {data} = response
             setDados(data)
-            {data.membership === undefined ? 
-                navigate("/subscriptions") : navigate(`/home/${data.membership.id}`)}
+            {data.membership === undefined || data.membership === null ? 
+                navigate("/subscriptions") : navigate("/home")}
             
         })
         promise.catch(erro => alert(erro.response))

@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import "./styles.css"
 
@@ -8,7 +9,7 @@ export default function Home ({dados}) {
             <Header logo={dados.membership.image} />
             <BoasVindas nome={dados.name} />
             <Beneficios beneficios={dados.membership.perks} />
-            <Footer />
+            <Footer token={dados.token} />
         </div>
     )
 }
@@ -32,26 +33,42 @@ function BoasVindas ({nome}) {
 function Beneficios ({beneficios}) {
     return (
         <div className="beneficios">
-            {beneficios.map(beneficio => <Beneficio titulo={beneficio.title} />)}
+            {beneficios.map(beneficio => <Beneficio titulo={beneficio.title} link={beneficio.link} />)}
         </div>
     )
 }
-function Beneficio ({titulo}) {
+function Beneficio ({titulo, link}) {
+    function acessarBeneficio () {
+        window.open(link)
+    }
     return (
         <div className="beneficio">
-            <button>{titulo}</button>
+            <button onClick={() => acessarBeneficio() }>{titulo}</button>
         </div>
     )
 }
 
-function Footer () {
+function Footer ({token}) {
     const navigate = useNavigate()
 
     function alterar () {
         navigate("/subscriptions")
     }
     function cancelar() {
-        console.log("calma, não cancelou não")
+        const url = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions"
+        const config = {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }
+        const promise = axios.delete(url, config)
+        promise.then(response => {
+            const {data} = response
+            console.log(data)
+            navigate(`/subscriptions`)
+            
+        })
+        promise.catch(erro => console.log(erro.response))
     }
 
     return (

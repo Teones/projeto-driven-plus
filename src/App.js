@@ -17,8 +17,8 @@ export default function App () {
                 <Route path="/" element={<Login setDados={setDados} />} />
                 <Route path="/sign-up" element={<Cadastro />} />
                 <Route path="/subscriptions" element={<Planos dados={dados.token} />} />
-                <Route path="/subscriptions/:id" element={<Plano dados={dados.token} />} />
-                <Route path="/home/:id" element={<Home dados={dados} />} />
+                <Route path="/subscriptions/:id" element={<Plano dados={dados.token} setDados={setDados} />} />
+                <Route path="/home" element={<Home dados={dados} />} />
             </Routes>
         </BrowserRouter>
     )
