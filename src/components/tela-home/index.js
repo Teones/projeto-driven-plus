@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import "./styles.css"
 
 export default function Home ({dados}) {
-    console.log(dados)
     return (
         <div className="home">
             <Header logo={dados.membership.image} />
@@ -18,6 +17,7 @@ function Header ({logo}) {
     return (
         <div className="header">
             <img src={logo} />
+            <ion-icon name="person-circle-outline"></ion-icon>
         </div>
     )
 }
@@ -64,11 +64,10 @@ function Footer ({token}) {
         const promise = axios.delete(url, config)
         promise.then(response => {
             const {data} = response
-            console.log(data)
             navigate(`/subscriptions`)
             
         })
-        promise.catch(erro => console.log(erro.response))
+        promise.catch(erro => alert(erro.response.data.message))
     }
 
     return (

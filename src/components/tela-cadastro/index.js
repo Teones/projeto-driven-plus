@@ -33,10 +33,9 @@ function Formulario () {
         const promise = axios.post(url, body)
         promise.then( response => {
             const {data} = response
-            console.log(data)
             navigate("/")
         })
-        promise.catch(erro => alert(erro.response))
+        promise.catch(erro => alert(erro.response.data.message))
     }
 
     return (

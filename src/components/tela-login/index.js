@@ -45,7 +45,7 @@ function Formulario ({setDados}) {
                 navigate("/subscriptions") : navigate("/home")}
             
         })
-        promise.catch(erro => alert(erro.response))
+        promise.catch(erro => alert(erro.response.data.message))
     }
 
     return (

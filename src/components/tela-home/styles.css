@@ -14,7 +14,13 @@
     width: 75px;
     height: 50px;
 }
-
+.home .header ion-icon {
+    font-size: 32px;
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    color: #FFFFFF;
+}
 .home .boas-vindas {
     width: 100%;
     
@@ -53,11 +59,12 @@
 }
 
 .home .footer {
-    width: 100%;
+    width: calc(100% - 78px);
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 100px 0 20px 0 ;
+    position: fixed;
+    bottom: 20px;
 }
 .home .footer button:last-child {
     background-color: #FF4747;

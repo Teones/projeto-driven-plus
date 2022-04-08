@@ -35,9 +35,8 @@ function Opcoes ({dados}) {
         promise.then(response => {
             const {data} = response
             setPlanos(data)
-            console.log(data)
         })
-        promise.catch(erro => console.log(erro.response))
+        promise.catch(erro => alert(erro.response.data.message))
     }, [])
 
     return (
